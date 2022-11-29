@@ -7,9 +7,22 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel>
-            <Label Content="1. UserControl"></Label>
-            <Button Content="Add" Width="120" Height="38" Click="Button_Click1" Margin="640,350,0,0" />
+        <Label Content="1. UserControl" Height="29" Margin="0,0,0,420.6"></Label>
+        <StackPanel x:Name="contentWrapper" Orientation="Vertical" Margin="0,50,759,226.6">
+            <TextBox Height="23" Margin="10" TextWrapping="Wrap" Text="0" RenderTransformOrigin="0.677,2.12"/>
+            <TextBox Height="23" Margin="10" TextWrapping="Wrap" Text="0" />
+            <TextBox Height="23" Margin="10" TextWrapping="Wrap" Text="0"/>
+            <TextBox Height="23" Margin="10" TextWrapping="Wrap" Text="0"/>
         </StackPanel>
+        <StackPanel x:Name="contentWrapper2" Orientation="Vertical" Margin="58,51,442,226.6">
+
+            <TextBlock TextWrapping="Wrap" Margin="10" Text="Vanilla Cookie" Height="22" />
+            <TextBlock TextWrapping="Wrap" Margin="10" Text="Double Chocolate Cookie" Height="22" />
+            <TextBlock TextWrapping="Wrap" Margin="10" Text="Cookie Classic" Height="22" />
+            <TextBlock TextWrapping="Wrap" Margin="10" Text="Lemon Cookie" Height="22" />
+        </StackPanel>
+
+                <Button Content="Add" Width="120" Height="38" Click="Go2Page2" Margin="640,350,0,0" />
+        
     </Grid>
 </UserControl>
