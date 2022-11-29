@@ -16,6 +16,18 @@
         <DataTemplate DataType="{x:Type local:MyViewModel3}">
             <local:UserControl3 DataContext="{Binding}" Visibility="{Binding visibility}" />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:MyViewModel4}">
+            <local:UserControl3 DataContext="{Binding}" Visibility="{Binding visibility}" />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:MyViewModel5}">
+            <local:UserControl3 DataContext="{Binding}" Visibility="{Binding visibility}" />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:MyViewModel6}">
+            <local:UserControl3 DataContext="{Binding}" Visibility="{Binding visibility}" />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:MyViewModel7}">
+            <local:UserControl3 DataContext="{Binding}" Visibility="{Binding visibility}" />
+        </DataTemplate>
     </UserControl.Resources>
     <ContentControl Content="{Binding}" />
 </UserControl>
