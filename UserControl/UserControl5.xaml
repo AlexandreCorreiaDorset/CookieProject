@@ -7,6 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <DataGrid HorizontalAlignment="Left" Height="100" 
+                  Name="dataGridStocks" ItemsSource="{Binding}" 
+                  Margin="90,89,0,0" VerticalAlignment="Top" Width="485"/>
+        <TextBox Name="product2Search" TextChanged="displayStocks" HorizontalAlignment="Left" Height="23" Margin="239,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="36" Height="22"/>
     </Grid>
 </UserControl>

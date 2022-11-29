@@ -13,6 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.Data;
+using System.Configuration;
+
 namespace WpfFramePasCore.UserControl
 {
     /// <summary>
@@ -23,6 +29,46 @@ namespace WpfFramePasCore.UserControl
         public UserControl5()
         {
             InitializeComponent();
+        }
+
+        static string server = "localhost";
+        static string database = "cookies";
+        static string user = "root";
+        static string password = "ABCD1234";
+        //string port = "3306";
+        static string connectionString = "server=" + server + ";" +
+                                    "uid=" + user + ";" +
+                                    "pwd=" + password + ";" +
+                                     "database=" + database + ";";
+
+        MySqlConnection conn = new MySqlConnection(connectionString);
+
+        private void displayStocks(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                string command;
+                if (product2Search.Text == null)
+                    command = "Select Id,name,main_adress,tel,email from clients;";
+                else
+                    command = "Select Id,name,main_adress,tel,email from clients where name = '" + product2Search.Text + "';";
+
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+
+                DataSet ds = new DataSet("clients");
+                DataTable customertable = new DataTable();
+
+                customertable.Load(cmd.ExecuteReader());
+                dataGridStocks.DataContext = customertable;
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+
         }
     }
 }
