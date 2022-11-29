@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="WpfFramePasCore.UserControl.UC1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfFramePasCore.UserControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type local:MyViewModel1}" >
+            <local:UserControl1 DataContext="{Binding}" Visibility="{Binding visibility}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:MyViewModel2}">
+            <local:UserControl2 DataContext="{Binding}" Visibility="{Binding visibility}" />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:MyViewModel3}">
+            <local:UserControl3 DataContext="{Binding}" Visibility="{Binding visibility}" />
+        </DataTemplate>
+    </UserControl.Resources>
+    <ContentControl Content="{Binding}" />
+</UserControl>
