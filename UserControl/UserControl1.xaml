@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label Content="1. UserControl" Height="29" Margin="0,0,0,420.6"></Label>
-        <StackPanel x:Name="contentWrapper" Orientation="Vertical" Margin="0,50,759,226.6">
+        <Label Content="1. Enter Command" Height="29" Margin="0,0,0,420.6"></Label>
+        <StackPanel x:Name="contentWrapper" Orientation="Vertical" Margin="0,50,747,226.6">
             <TextBox Height="23" Margin="10" TextWrapping="Wrap" Text="0" RenderTransformOrigin="0.677,2.12"/>
             <TextBox Height="23" Margin="10" TextWrapping="Wrap" Text="0" />
             <TextBox Height="23" Margin="10" TextWrapping="Wrap" Text="0"/>
@@ -22,7 +22,10 @@
             <TextBlock TextWrapping="Wrap" Margin="10" Text="Lemon Cookie" Height="22" />
         </StackPanel>
 
-                <Button Content="Add" Width="120" Height="38" Click="Go2Page2" Margin="640,350,0,0" />
-        
+        <Button Content="Confirmer" Click="GoToP2" Margin="419,276,306,147.6" />
+        <Button Content="Stocks" HorizontalAlignment="Left" Margin="570,229,0,0" VerticalAlignment="Top" Width="115" Height="36"/>
+        <Button Content="Clients" HorizontalAlignment="Left" Margin="570,51,0,0" VerticalAlignment="Top" Width="115" Height="47"/>
+        <Button Content="Commands" HorizontalAlignment="Left" Margin="570,138,0,0" VerticalAlignment="Top" Width="115" Height="44"/>
+
     </Grid>
 </UserControl>

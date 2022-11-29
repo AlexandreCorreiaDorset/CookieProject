@@ -24,7 +24,7 @@ namespace WpfFramePasCore.UserControl
         {
             InitializeComponent();
         }
-        private void Go2Page2(object sender, RoutedEventArgs e)
+        private void GoToP2(object sender, RoutedEventArgs e)
         {
             MyViewModel1 model1 = new MyViewModel1();
             MyViewModel2 model2 = new MyViewModel2();

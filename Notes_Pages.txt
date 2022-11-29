@@ -1,0 +1,13 @@
+UserControl1: page de caisse + menu
+
+UserControl2: page de recherche client/creation
+
+Usercontrol3: Gestion Commande
+
+UserControl4: Gestion Client 
+
+UserControl5: gestion/creation des stock
+
+UserControl6: gestion/creation livraison
+
+UserControl7: Planning 

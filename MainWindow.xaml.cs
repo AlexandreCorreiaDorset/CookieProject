@@ -36,7 +36,8 @@ namespace WpfFramePasCore
 
         public MainWindow()
         {
-            
+            //WindowState = WindowState.Maximized;
+            //WindowStyle = WindowStyle.None;
             InitializeComponent();
         }      
         
