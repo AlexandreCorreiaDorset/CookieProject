@@ -81,5 +81,22 @@ namespace WpfFramePasCore.UserControl
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.DataContext = viewModel;
         }
+        private void GoToP3(object sender, RoutedEventArgs e)
+        {
+            MyViewModel1 model1 = new MyViewModel1();
+            MyViewModel3 model2 = new MyViewModel3();
+
+            model2.IsShown = true;
+            model2.visibility = Visibility.Visible;
+
+            model1.IsShown = false;
+            model1.visibility = Visibility.Hidden;
+
+            ViewModel viewModel = new ViewModel();
+            viewModel.DataLoad(model1, model2);
+
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.DataContext = viewModel;
+        }
     }
 }
