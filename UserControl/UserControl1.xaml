@@ -8,13 +8,13 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Label Content="1. Enter Command" Height="29" Margin="0,0,0,420.6"></Label>
-        <StackPanel x:Name="contentWrapper" Orientation="Vertical" Margin="0,50,747,226.6">
-            <TextBox Height="23" Margin="10" TextWrapping="Wrap" Text="0" RenderTransformOrigin="0.677,2.12"/>
-            <TextBox Height="23" Margin="10" TextWrapping="Wrap" Text="0" />
-            <TextBox Height="23" Margin="10" TextWrapping="Wrap" Text="0"/>
-            <TextBox Height="23" Margin="10" TextWrapping="Wrap" Text="0"/>
+        <StackPanel x:Name="contentWrapper" Orientation="Vertical" Margin="0,50,747,200">
+            <TextBox Name="number_Vanilla_Cookie" Height="23" Margin="10,10,5.8,10" TextWrapping="Wrap" Text="0" RenderTransformOrigin="0.677,2.12"/>
+            <TextBox Name="number_Choco_Cookie" Height="23" Margin="10,10,5.8,10" TextWrapping="Wrap" Text="0" />
+            <TextBox Name="number_classic" Height="23" Margin="10,10,5.8,10" TextWrapping="Wrap" Text="0"/>
+            <TextBox Name="number_Lemon_Cookie"  Height="23" Margin="10,10,5.8,10" TextWrapping="Wrap" Text="0"/>
         </StackPanel>
-        <StackPanel x:Name="contentWrapper2" Orientation="Vertical" Margin="58,51,442,226.6">
+        <StackPanel x:Name="contentWrapper2" Orientation="Vertical" Margin="58,51,442,200">
 
             <TextBlock TextWrapping="Wrap" Margin="10" Text="Vanilla Cookie" Height="22" />
             <TextBlock TextWrapping="Wrap" Margin="10" Text="Double Chocolate Cookie" Height="22" />
@@ -22,7 +22,7 @@
             <TextBlock TextWrapping="Wrap" Margin="10" Text="Lemon Cookie" Height="22" />
         </StackPanel>
 
-        <Button Content="Confirmer" Click="GoToP2" Margin="419,276,306,147.6" />
+        <Button Content="Confirmer" Click="GoToP2" Margin="399,272,321,0" VerticalAlignment="Top" Height="23" />
         <Button Content="Stocks" HorizontalAlignment="Left" Margin="570,229,0,0" VerticalAlignment="Top" Width="115" Height="36"/>
         <Button Content="Clients" HorizontalAlignment="Left" Margin="570,51,0,0" VerticalAlignment="Top" Width="115" Height="47"/>
         <Button Content="Commands" HorizontalAlignment="Left" Margin="570,138,0,0" VerticalAlignment="Top" Width="115" Height="44"/>
