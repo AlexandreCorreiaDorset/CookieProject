@@ -21,26 +21,33 @@
 
         <!--<Button Content="Show" Width="120" Height="38" Click="Button_Click2" Margin="635,379,45,32.6" />-->
 
-        <StackPanel Height="58"  Orientation="Vertical" Margin="231,259,527,132.6" RenderTransformOrigin="0.27,-0.398">
-            <TextBox Height="23" TextWrapping="Wrap"/>
+        <StackPanel  Orientation="Vertical" Margin="226,259,532,50" RenderTransformOrigin="0.27,-0.398">
+            <TextBox Height="23" TextWrapping="Wrap" Name="Name"/>
         </StackPanel>
-        <StackPanel  Orientation="Vertical" Margin="347,259,390,132.6">
-            <TextBox Height="23" TextWrapping="Wrap"  Margin="0,0,9.2,0" />
+        <StackPanel  Orientation="Vertical" Margin="346,259,391,50.6">
+            <TextBox Height="23" TextWrapping="Wrap"  Margin="0,0,9.2,0" Name="Adress"/>
         </StackPanel>
-        <Button Content="Add new customer" Margin="286,372,411,36.6" />
-        <StackPanel HorizontalAlignment="Left" Height="100" Margin="531,259,0,0" VerticalAlignment="Top" Width="100">
-            <TextBlock TextWrapping="Wrap" Text="Name"/>
+        <StackPanel  Orientation="Vertical" Margin="575,259,162,50.6">
+            <TextBox Height="23" Name="Email" TextWrapping="Wrap"  Margin="0,0,9.2,0" />
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="100" Margin="431,259,0,0" VerticalAlignment="Top" Width="100">
-            <TextBlock TextWrapping="Wrap" Text="Name"/>
+        <StackPanel  Orientation="Vertical" Margin="453,259,284,50.6">
+            <TextBox Height="23" TextWrapping="Wrap" Name="Tel" Margin="0,0,9.2,0" />
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="100" Margin="310,259,0,0" VerticalAlignment="Top" Width="100">
-            <TextBlock TextWrapping="Wrap" Text="adress"/>
+        <Button Content="Add" Margin="178,343,551,50" Click="addNewCustomerClick" />
+        <StackPanel HorizontalAlignment="Left" Height="30" Margin="538,259,0,0" VerticalAlignment="Top" Width="100">
+            <TextBlock TextWrapping="Wrap" Text="Email" />
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="58" Margin="191,259,0,0" VerticalAlignment="Top" Width="57">
-            <TextBlock TextWrapping="Wrap" Text="Name"/>
+        <StackPanel HorizontalAlignment="Left" Height="30" Margin="433,259,0,0" VerticalAlignment="Top" Width="100">
+            <TextBlock TextWrapping="Wrap" Text="Tel"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="30" Margin="309,259,0,0" VerticalAlignment="Top" Width="100">
+            <TextBlock TextWrapping="Wrap" Text="Adress" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="58" Margin="192,259,0,0" VerticalAlignment="Top" Width="57">
+            <TextBlock TextWrapping="Wrap" Text="Name" />
         </StackPanel>
         <Button Content="Back" Click="Button_Click2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="46" Margin="10,10,0,0"/>
+        <Label Content="Add new Customer:" HorizontalAlignment="Left" Margin="162,236,0,0" VerticalAlignment="Top" Height="32" Width="142"/>
 
 
     </Grid>

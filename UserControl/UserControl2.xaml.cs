@@ -123,5 +123,42 @@ namespace WpfFramePasCore.UserControl
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.DataContext = viewModel;
         }
+
+        private void addNewCustomerClick(object sender, RoutedEventArgs e)
+        {
+            string cName = Name.Text;
+            string cAdress = Adress.Text;
+            string cTel = Tel.Text;
+            string cEmail = Email.Text;
+
+            try
+            {
+                conn.Open();
+
+                string command = "insert into clients (name, main_adress,tel, email)" +
+                                " values ('"+ cName + "','" + cAdress + "','"+ cTel + "','" + cEmail + "');";
+
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+                cmd.ExecuteReader();
+                conn.Close();
+
+                conn.Open();
+
+                command = "update commands set Id_client = (select Id from clients order by Id DESC LIMIT 1),"+
+                             "adress = (select adress from clients order by Id DESC LIMIT 1)"+
+                             "ORDER BY Id DESC LIMIT 1; ";
+
+                cmd = new MySqlCommand(command, conn);
+                cmd.ExecuteReader();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+            GoToP1();
+            MessageBox.Show("Command registered");
+
+        }
     }
 }
