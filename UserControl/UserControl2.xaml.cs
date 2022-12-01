@@ -43,20 +43,7 @@ namespace WpfFramePasCore.UserControl
         }
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
-            MyViewModel3 model1 = new MyViewModel3();
-            MyViewModel2 model2 = new MyViewModel2();
-            
-            model2.IsShown = false;
-            model2.visibility = Visibility.Hidden;
-
-            model1.IsShown = true;
-            model1.visibility = Visibility.Visible;
-
-            ViewModel viewModel = new ViewModel();
-            viewModel.DataLoad(model1, model2);
-
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.DataContext = viewModel;
+            GoToP1();
         }
 
         private void textChangedEventHandler(object sender, RoutedEventArgs e)
@@ -66,10 +53,7 @@ namespace WpfFramePasCore.UserControl
             {
                 conn.Open();
                 string command;
-                if (name2Search.Text == null)
-                    command = "Select Id,name,main_adress,tel,email from clients;";
-               else
-                    command = "Select Id,name,main_adress,tel,email from clients where name = '"+ name2Search.Text +"';";
+                command = "Select Id,name,main_adress,tel,email from clients where name like '%" + name2Search.Text +"%';";
 
                 MySqlCommand cmd = new MySqlCommand(command, conn);
 
@@ -85,6 +69,59 @@ namespace WpfFramePasCore.UserControl
                 MessageBox.Show(ex.ToString());
             }
             conn.Close();
+        }
+
+        private void dataGridCustomers_SelectionChanged(object sender, EventArgs e)
+        {
+            var cellInfo = dataGridCustomers.SelectedCells[0];
+            var idSelectedClient = (cellInfo.Column.GetCellContent(cellInfo.Item) as TextBlock).Text;
+            
+            cellInfo = dataGridCustomers.SelectedCells[2];
+            var adressSelectedClient = (cellInfo.Column.GetCellContent(cellInfo.Item) as TextBlock).Text;
+
+            try
+            {
+                conn.Open();
+                string command;
+                command = " update commands set Id_client = " + idSelectedClient +
+                    ", adress = '" +adressSelectedClient+
+                    "' ORDER BY Id DESC LIMIT 1;";
+
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+
+                DataSet ds = new DataSet("clients");
+                DataTable customertable = new DataTable();
+
+                customertable.Load(cmd.ExecuteReader());
+                dataGridCustomers.DataContext = customertable;
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+
+            GoToP1();
+            MessageBox.Show("Command registered");
+
+        }
+        private void GoToP1()
+        {
+            MyViewModel1 model1 = new MyViewModel1();
+            MyViewModel2 model2 = new MyViewModel2();
+
+            model2.IsShown = false;
+            model2.visibility = Visibility.Hidden;
+
+            model1.IsShown = true;
+            model1.visibility = Visibility.Visible;
+
+            ViewModel viewModel = new ViewModel();
+            viewModel.DataLoad(model1, model2);
+
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.DataContext = viewModel;
         }
     }
 }
