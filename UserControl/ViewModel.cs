@@ -75,7 +75,7 @@ namespace WpfFramePasCore.UserControl
             OnPropertyChanged("CurrentVM");
             return currentVM;
         }
-        public object DataLoad(MyViewModel1 _myView1, MyViewModel6 _myView2)
+        public object DataLoad(MyViewModel5 _myView1, MyViewModel6 _myView2)
         {
             if (_myView1.IsShown == true && _myView1.visibility == Visibility.Visible) { currentVM = _myView1; }
             if (_myView2.IsShown == true && _myView2.visibility == Visibility.Visible) { currentVM = _myView2; }

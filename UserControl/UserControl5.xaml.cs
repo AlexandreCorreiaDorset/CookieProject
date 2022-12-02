@@ -49,15 +49,15 @@ namespace WpfFramePasCore.UserControl
             {
                 conn.Open();
                 string command;
-                command = "Select * from ingredient where name like '%" + item2Search.Text + "%';";
-
+                command = "Select * from ingredients where name like '%" + item2Search.Text + "%'"+
+                "union Select* from ingredients where found_rows() = 0 and ingredient_name like '%%';";
+                
                 MySqlCommand cmd = new MySqlCommand(command, conn);
 
-                DataSet ds = new DataSet("clients");
-                DataTable customertable = new DataTable();
+                DataTable ingredientsTable = new DataTable();
 
-                customertable.Load(cmd.ExecuteReader());
-                dataGridStocks.DataContext = customertable;
+                ingredientsTable.Load(cmd.ExecuteReader());
+                dataGridStocks.DataContext = ingredientsTable;
 
             }
             catch (MySqlException ex)
@@ -73,15 +73,17 @@ namespace WpfFramePasCore.UserControl
             {
                 conn.Open();
                 string command;
-                command = "Select * from ingredient where name like '%" + item2Search.Text + "%';";
+
+                command = "select ingredients.ingredient_name, delivery_date,numberof,price " +
+                    "from delivery ,ingredients"+
+                    "where ingredients.ingredient_name =" + liv2Search.Text + " and ingredients.Id = delivery.product_id;";
 
                 MySqlCommand cmd = new MySqlCommand(command, conn);
 
-                DataSet ds = new DataSet("clients");
-                DataTable customertable = new DataTable();
+                DataTable deliveryTable = new DataTable();
 
-                customertable.Load(cmd.ExecuteReader());
-                dataGridStocks.DataContext = customertable;
+                deliveryTable.Load(cmd.ExecuteReader());
+                dataGridStocks.DataContext = deliveryTable;
 
             }
             catch (MySqlException ex)
@@ -108,12 +110,29 @@ namespace WpfFramePasCore.UserControl
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.DataContext = viewModel;
         }
-
         
 
         private void Back_click(object sender, RoutedEventArgs e)
         {
             GoToP1();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MyViewModel5 model1 = new MyViewModel5();
+            MyViewModel6 model2 = new MyViewModel6();
+
+            model2.IsShown = false;
+            model2.visibility = Visibility.Hidden;
+
+            model1.IsShown = true;
+            model1.visibility = Visibility.Visible;
+
+            ViewModel viewModel = new ViewModel();
+            viewModel.DataLoad(model1, model2);
+
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.DataContext = viewModel;
         }
     }
 }

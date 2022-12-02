@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel Margin="162,0,84,232.6">
-            <Label Content="Search for an item:" Margin="0,0,-0.4,0"/>
+            <Label Content="Search for an item in stocks:" Margin="0,0,-0.4,0"/>
             <TextBox Height="18" TextWrapping="Wrap" 
                      x:Name = "item2Search"
                      TextChanged="displayStocks"
@@ -23,7 +23,7 @@
             <Label Content="Search for a delivery:"></Label>
             <TextBox Height="18" TextWrapping="Wrap" 
                      x:Name = "liv2Search"
-                     TextChanged="livraisonTextChanged"
+                     TextChanged="displayDeliveries"
                      Margin="180,10,199.6,0"/>
             <DataGrid HorizontalAlignment="Left" Margin="50,10,0,20" IsReadOnly="true"
                   x:Name="dataGridliv" Width="435" SelectionUnit="FullRow"
@@ -31,6 +31,6 @@
                       />
         </StackPanel>
         <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="36" Height="22" Click="Back_click"/>
-        <Button Content="Add Livraison" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="178,425,0,0"/>
+        <Button Content="Add Livraison" HorizontalAlignment="Left" Width="75" Margin="178,425,0,5.6" Click="Button_Click"/>
     </Grid>
 </UserControl>

@@ -28,10 +28,25 @@ update commands set Id_client = 2,
  ORDER BY Id DESC LIMIT 1;
 delete from commands where Id_client is null;
 select * from ingredients;
-drop table ingredients;
 CREATE TABLE stocks(
     Id int NOT NULL AUTO_INCREMENT,
     denomination varchar(255) NOT NULL,
+    associated_final_product varchar(255),
+    numberof int,
+	price int,
+    PRIMARY KEY (Id)
+);
+select * from ingredients;
+drop table ingredients;
+CREATE TABLE ingredients(
+    Id int NOT NULL AUTO_INCREMENT,
+    ingredient_name varchar(255) NOT NULL,
+    PRIMARY KEY (Id)
+);
+insert into ingredients (ingredient_name) values ('salt');
+CREATE TABLE delivery(
+    Id int NOT NULL AUTO_INCREMENT,
+    delivery_date date NOT NULL,
     associated_final_product varchar(255),
     numberof varchar(255),
 	price varchar(255),
