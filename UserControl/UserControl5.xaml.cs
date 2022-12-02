@@ -49,10 +49,7 @@ namespace WpfFramePasCore.UserControl
             {
                 conn.Open();
                 string command;
-                if (product2Search.Text == null)
-                    command = "Select Id,name,main_adress,tel,email from clients;";
-                else
-                    command = "Select Id,name,main_adress,tel,email from clients where name = '" + product2Search.Text + "';";
+                command = "Select * from ingredient where name like '%" + item2Search.Text + "%';";
 
                 MySqlCommand cmd = new MySqlCommand(command, conn);
 
@@ -69,6 +66,54 @@ namespace WpfFramePasCore.UserControl
             }
             conn.Close();
 
+        }
+        private void displayDeliveries(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                string command;
+                command = "Select * from ingredient where name like '%" + item2Search.Text + "%';";
+
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+
+                DataSet ds = new DataSet("clients");
+                DataTable customertable = new DataTable();
+
+                customertable.Load(cmd.ExecuteReader());
+                dataGridStocks.DataContext = customertable;
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+
+        }
+        private void GoToP1()
+        {
+            MyViewModel1 model1 = new MyViewModel1();
+            MyViewModel5 model2 = new MyViewModel5();
+
+            model2.IsShown = false;
+            model2.visibility = Visibility.Hidden;
+
+            model1.IsShown = true;
+            model1.visibility = Visibility.Visible;
+
+            ViewModel viewModel = new ViewModel();
+            viewModel.DataLoad(model1, model2);
+
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.DataContext = viewModel;
+        }
+
+        
+
+        private void Back_click(object sender, RoutedEventArgs e)
+        {
+            GoToP1();
         }
     }
 }

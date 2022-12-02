@@ -20,4 +20,20 @@ CREATE TABLE commands(
 	lemon_cookie_number int,
     PRIMARY KEY (Id)
 );
-delete from commands where double_chocolate_cookie_number=0;
+update commands set Id_client = 2,
+ adress = '15216rtg1po'
+ ORDER BY Id DESC LIMIT 1;
+ update commands set Id_client = (select Id from clients order by Id DESC LIMIT 1,1),
+ adress = (select adress from clients order by Id DESC LIMIT 1,1)
+ ORDER BY Id DESC LIMIT 1;
+delete from commands where Id_client is null;
+select * from ingredients;
+drop table ingredients;
+CREATE TABLE stocks(
+    Id int NOT NULL AUTO_INCREMENT,
+    denomination varchar(255) NOT NULL,
+    associated_final_product varchar(255),
+    numberof varchar(255),
+	price varchar(255),
+    PRIMARY KEY (Id)
+);
