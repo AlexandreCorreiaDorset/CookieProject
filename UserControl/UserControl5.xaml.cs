@@ -47,18 +47,18 @@ namespace WpfFramePasCore.UserControl
         {
             try
             {
+
                 conn.Open();
                 string command;
-                command = "Select * from ingredients where name like '%" + item2Search.Text + "%'"+
-                "union Select* from ingredients where found_rows() = 0 and ingredient_name like '%%';";
-                
+                command = $"Select * from ingredients where ingredient_name like '%{item2Search.Text}%'" +
+                "union Select * from ingredients where found_rows() = 0 and ingredient_name like '%%';";
+
                 MySqlCommand cmd = new MySqlCommand(command, conn);
 
                 DataTable ingredientsTable = new DataTable();
 
                 ingredientsTable.Load(cmd.ExecuteReader());
                 dataGridStocks.DataContext = ingredientsTable;
-
             }
             catch (MySqlException ex)
             {
@@ -67,23 +67,25 @@ namespace WpfFramePasCore.UserControl
             conn.Close();
 
         }
-        private void displayDeliveries(object sender, TextChangedEventArgs e)
+        private void displayDeliveries(object sender, EventArgs e)
         {
             try
             {
+                var cellInfo = dataGridStocks.SelectedCells[1];
+                var itemName = (cellInfo.Column.GetCellContent(cellInfo.Item) as TextBlock).Text;
+
                 conn.Open();
                 string command;
 
-                command = "select ingredients.ingredient_name, delivery_date,numberof,price " +
-                    "from delivery ,ingredients"+
-                    "where ingredients.ingredient_name =" + liv2Search.Text + " and ingredients.Id = delivery.product_id;";
+                command = "Select delivery.Id, ingredients.ingredient_name, delivery_date,numberof, price from delivery " +
+                            $"inner join ingredients on ingredients.Id = delivery.product_id  where ingredients.ingredient_name = '{itemName}';";
 
                 MySqlCommand cmd = new MySqlCommand(command, conn);
 
                 DataTable deliveryTable = new DataTable();
 
                 deliveryTable.Load(cmd.ExecuteReader());
-                dataGridStocks.DataContext = deliveryTable;
+                dataGridliv.DataContext = deliveryTable;
 
             }
             catch (MySqlException ex)
@@ -110,14 +112,14 @@ namespace WpfFramePasCore.UserControl
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.DataContext = viewModel;
         }
-        
+
 
         private void Back_click(object sender, RoutedEventArgs e)
         {
             GoToP1();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void GoToP6(object sender, RoutedEventArgs e)
         {
             MyViewModel5 model1 = new MyViewModel5();
             MyViewModel6 model2 = new MyViewModel6();

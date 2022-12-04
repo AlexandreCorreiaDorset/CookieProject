@@ -41,14 +41,54 @@ drop table ingredients;
 CREATE TABLE ingredients(
     Id int NOT NULL AUTO_INCREMENT,
     ingredient_name varchar(255) NOT NULL,
+    quantity int,    
     PRIMARY KEY (Id)
 );
-insert into ingredients (ingredient_name) values ('salt');
+insert into ingredients (ingredient_name,quantity) values
+ ('salt',1),
+ ('white_chocolate_chip',1),
+ ('vanilla_extract',1),
+('sugar',1),
+('salt',1),
+('milk',1),
+('macadamia_nuts',1),
+('lemon_flavour',1),
+('chocolate_chip',1),
+('canola_oil',1),
+('all_purpose_flour',1);
+select * from ingredients;
 CREATE TABLE delivery(
     Id int NOT NULL AUTO_INCREMENT,
     delivery_date date NOT NULL,
-    associated_final_product varchar(255),
-    numberof varchar(255),
-	price varchar(255),
-    PRIMARY KEY (Id)
+    product_id int,
+    numberof int,
+	price int,
+    PRIMARY KEY (Id),
+    FOREIGN KEY (product_id) REFERENCES ingredients(Id)
 );
+drop table delivery;
+Select * from ingredients where ingredient_name like '%av%'
+union
+Select * from ingredients where found_rows() =0
+ and ingredient_name like '%%';
+ 
+ Select * from ingredients where ingredient_name like '%%'
+union Select* from ingredients where found_rows() = 0 and ingredient_name like '%%';
+ 
+ select delivery.Id, ingredients.ingredient_name, delivery_date,numberof, price from delivery
+ right join ingredients on ingredients.Id = delivery.product_id  where ingredients.ingredient_name = '%salt%';
+
+select * from delivery;
+
+select * from ingredients;
+
+ insert into delivery (delivery_date,product_id,numberof,price)
+ values
+ ('2222-01-01',1,2,5),
+('2222-01-01',2,2,5) ,
+('2222-01-01',3,2,5) ,
+('2222-01-01',4,2,5),
+('2222-01-01',5,2,5),
+('2222-01-01',6,2,5),
+('2222-01-01',7,2,5),
+('2222-01-01',8,2,5)

@@ -24,7 +24,7 @@ namespace WpfFramePasCore.UserControl
         {
             InitializeComponent();
         }
-        private void Button_Click3(object sender, RoutedEventArgs e)
+        private void P1ToP3(object sender, RoutedEventArgs e)
         {
             MyViewModel1 model1 = new MyViewModel1();
             MyViewModel3 model2 = new MyViewModel3();

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel Margin="162,0,84,232.6">
+        <StackPanel Margin="136,0,110,193.6">
             <Label Content="Search for an item in stocks:" Margin="0,0,-0.4,0"/>
             <TextBox Height="18" TextWrapping="Wrap" 
                      x:Name = "item2Search"
@@ -15,22 +15,20 @@
                      Margin="180,10,199.6,0"/>
             <DataGrid HorizontalAlignment="Left" Margin="50,10,0,20" IsReadOnly="true"
                   x:Name="dataGridStocks" Width="435" SelectionUnit="FullRow"
-                  ItemsSource="{Binding}" Height="129" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"
-                      />
+                      MouseDoubleClick="displayDeliveries"
+                  ItemsSource="{Binding}" Height="189" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"/>
         </StackPanel>
 
-        <StackPanel Margin="162,203,84,29.6">
-            <Label Content="Search for a delivery:"></Label>
-            <TextBox Height="18" TextWrapping="Wrap" 
-                     x:Name = "liv2Search"
-                     TextChanged="displayDeliveries"
-                     Margin="180,10,199.6,0"/>
-            <DataGrid HorizontalAlignment="Left" Margin="50,10,0,20" IsReadOnly="true"
-                  x:Name="dataGridliv" Width="435" SelectionUnit="FullRow"
-                  ItemsSource="{Binding}" Height="129" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"
+        <StackPanel Margin="170,261,76,59.6">
+            <Label Content="Delivery for selected product:"></Label>
+            <DataGrid HorizontalAlignment="Left" Margin="48,10,0,20" IsReadOnly="true"
+                  x:Name="dataGridliv" Width="193" SelectionUnit="FullRow"
+                  ItemsSource="{Binding}" Height="85" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"
                       />
         </StackPanel>
-        <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="36" Height="22" Click="Back_click"/>
-        <Button Content="Add Livraison" HorizontalAlignment="Left" Width="75" Margin="178,425,0,5.6" Click="Button_Click"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Width="36" Height="22" Click="Back_click"/>
+        <StackPanel HorizontalAlignment="Left" Height="47" VerticalAlignment="Top" Width="100" Margin="451,362,0,0">
+            <Button Content="Add Delivery"  HorizontalAlignment="Left" Width="75"  Click="GoToP6"/>
+        </StackPanel>
     </Grid>
 </UserControl>
