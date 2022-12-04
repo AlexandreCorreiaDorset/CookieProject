@@ -121,20 +121,40 @@ namespace WpfFramePasCore.UserControl
 
         private void GoToP6(object sender, RoutedEventArgs e)
         {
-            MyViewModel5 model1 = new MyViewModel5();
-            MyViewModel6 model2 = new MyViewModel6();
+            try
+            {
+                var cellInfo = dataGridStocks.SelectedCells[0];
+                var itemId = (cellInfo.Column.GetCellContent(cellInfo.Item) as TextBlock).Text;
+                
+                conn.Open();
 
-            model2.IsShown = false;
-            model2.visibility = Visibility.Hidden;
+                string command = "insert into delivery (delivery_date,product_id)" +
+                                $" values ('{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}',{itemId});";
 
-            model1.IsShown = true;
-            model1.visibility = Visibility.Visible;
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+                cmd.ExecuteReader();
+                conn.Close();
 
-            ViewModel viewModel = new ViewModel();
-            viewModel.DataLoad(model1, model2);
+                MyViewModel5 model2 = new MyViewModel5();
+                MyViewModel6 model1 = new MyViewModel6();
 
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.DataContext = viewModel;
+                model2.IsShown = false;
+                model2.visibility = Visibility.Hidden;
+
+                model1.IsShown = true;
+                model1.visibility = Visibility.Visible;
+
+                ViewModel viewModel = new ViewModel();
+                viewModel.DataLoad(model2, model1);
+
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.DataContext = viewModel;
+            }
+            catch (Exception selectionException)
+            {
+                MessageBox.Show("Select a product to deliver !");
+                //MessageBox.Show(selectionException.ToString());
+            }
         }
     }
 }
