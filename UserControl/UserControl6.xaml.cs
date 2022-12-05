@@ -47,12 +47,11 @@ namespace WpfFramePasCore.UserControl
         private void RefreshDb()
         {
 
-            MessageBox.Show("Delivery registered");
             try
             {
                 conn.Open();
                 string command;
-                command = "Select * from delivery ;";
+                command = "Select * from delivery;";
 
                 MySqlCommand cmd = new MySqlCommand(command, conn);
 
@@ -65,7 +64,7 @@ namespace WpfFramePasCore.UserControl
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
             }
             conn.Close();
         }
