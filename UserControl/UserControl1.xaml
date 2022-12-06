@@ -29,30 +29,42 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Stocks" Click="GoToP5" HorizontalAlignment="Left" Margin="570,260,0,0" VerticalAlignment="Top" Width="115" Height="25">
+        <Button Content="Stocks" Click="GoToP5" HorizontalAlignment="Left" Margin="586,212,0,0" VerticalAlignment="Top" Width="115" Height="25">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Customers" Click="GoToP4" HorizontalAlignment="Left" Margin="570,149,0,0" VerticalAlignment="Top" Width="115" Height="26">
+        <Button Content="Customers" Click="GoToP4" HorizontalAlignment="Left" Margin="586,84,0,0" VerticalAlignment="Top" Width="115" Height="26">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Commands" Click="GoToP3" HorizontalAlignment="Left" Margin="570,203,0,0" VerticalAlignment="Top" Width="115" Height="28">
+        <Button Content="Commands" Click="GoToP3" HorizontalAlignment="Left" Margin="586,147,0,0" VerticalAlignment="Top" Width="115" Height="28">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Delivery" HorizontalAlignment="Left" Margin="570,107,0,0" VerticalAlignment="Top" Width="115" Click="GoToP7">
+        <Button Content="Delivery" HorizontalAlignment="Left" Margin="586,36,0,0" VerticalAlignment="Top" Width="115" Click="GoToP7" Height="29">
             <Button.Resources>
                 <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Image HorizontalAlignment="Left" Height="92" VerticalAlignment="Top" Width="309" Margin="230,10,0,0">
+            <Image.Source>
+                <BitmapImage  UriSource="/image/Logo_Cookie.png" />
+            </Image.Source>
+        </Image>
+        <Button Content="Management" HorizontalAlignment="Left" Margin="586,175,0,0" VerticalAlignment="Top" Width="115" Click="GoToP7" Height="29">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>

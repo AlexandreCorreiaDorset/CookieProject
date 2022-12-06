@@ -4,10 +4,11 @@ UserControl2: page de recherche client/creation
 
 Usercontrol3: Gestion Commande
 
-UserControl4: Gestion Client 
+UserControl4: Gestion gestion manuel Client 
 
-UserControl5: gestion/creation des stock
+UserControl5: creation des stock
+	|
+	V
+UserControl6: creation livraison
 
-UserControl6: gestion/creation livraison
-
-UserControl7: Planning 
+UserControl7: delivery manual management

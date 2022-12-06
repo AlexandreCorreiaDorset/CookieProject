@@ -30,10 +30,10 @@ namespace WpfFramePasCore.UserControl
         static string user = "root";
         static string password = "ABCD1234";
         //string port = "3306";
-        static string connectionString = "server=" + server + ";" +
-                                    "uid=" + user + ";" +
-                                    "pwd=" + password + ";" +
-                                     "database=" + database + ";";
+        static string connectionString = $"server={server};" +
+                                    $"uid={user};" +
+                                    $"pwd={password};" +
+                                     $"database={database};";
 
         MySqlConnection conn = new MySqlConnection(connectionString);
 
