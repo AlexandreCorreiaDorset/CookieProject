@@ -10,16 +10,9 @@
     <Window.DataContext>
         <local:ViewModel/>
     </Window.DataContext>
-    <!--<Window.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
-    </Window.Resources>-->
+
+    
     <Grid>
-        <!--<DataGrid Name="dataGridCustomers" 
-                  Visibility="{Binding Path=gridVisibility, Converter={StaticResource BoolToVisConverter} }" 
-                  HorizontalAlignment="Left" Height="100" Margin="158,153,0,0" VerticalAlignment="Top" Width="100" Loaded="btnloaddata_Click"/>
-        <Button Content="Button"
-                Click="HideButtonOnClick"
-                HorizontalAlignment="Left" Margin="433,216,0,0" VerticalAlignment="Top" Width="75"/>-->
         <local:UC1 DataContext="{Binding CurrentVM,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
 
     </Grid>

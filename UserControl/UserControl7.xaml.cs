@@ -24,5 +24,25 @@ namespace WpfFramePasCore.UserControl
         {
             InitializeComponent();
         }
+
+        private void GoToP1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void textChangedEventHandler(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void dataGridCustomers_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addNewStockClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

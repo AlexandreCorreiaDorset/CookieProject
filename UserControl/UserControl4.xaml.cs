@@ -40,6 +40,7 @@ namespace WpfFramePasCore.UserControl
         public UserControl4()
         {
             InitializeComponent();
+            RefreshDb();
         }
         private void textChangedEventHandler(object sender, RoutedEventArgs e)
         {

@@ -22,10 +22,42 @@
             <TextBlock TextWrapping="Wrap" Margin="10" Text="Lemon Cookie" Height="22" />
         </StackPanel>
 
-        <Button Content="Confirmer" Click="GoToP2" Margin="399,272,321,0" VerticalAlignment="Top" Height="23" />
-        <Button Content="Stocks" Click="GoToP5" HorizontalAlignment="Left" Margin="570,229,0,0" VerticalAlignment="Top" Width="115" Height="36"/>
-        <Button Content="Clients" Click="GoToP4" HorizontalAlignment="Left" Margin="570,51,0,0" VerticalAlignment="Top" Width="115" Height="47"/>
-        <Button Content="Commands" Click="GoToP3" HorizontalAlignment="Left" Margin="570,138,0,0" VerticalAlignment="Top" Width="115" Height="44"/>
+        <Button Content="Confirmer" Click="GoToP2" Margin="399,272,321,0" VerticalAlignment="Top" Height="23" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Stocks" Click="GoToP5" HorizontalAlignment="Left" Margin="570,260,0,0" VerticalAlignment="Top" Width="115" Height="25">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Customers" Click="GoToP4" HorizontalAlignment="Left" Margin="570,149,0,0" VerticalAlignment="Top" Width="115" Height="26">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Commands" Click="GoToP3" HorizontalAlignment="Left" Margin="570,203,0,0" VerticalAlignment="Top" Width="115" Height="28">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Delivery" HorizontalAlignment="Left" Margin="570,107,0,0" VerticalAlignment="Top" Width="115" Click="GoToP7">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
 
     </Grid>
 </UserControl>
