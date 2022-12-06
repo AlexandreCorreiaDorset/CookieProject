@@ -8,11 +8,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.ComponentModel;
 
+
 namespace WpfFramePasCore.UserControl
 {
-     abstract class MyViewModelAbstract : NotifyObject
+    class MyViewModelManegerPage : NotifyObject
     {
-        public MyViewModelAbstract()
+        public MyViewModelManegerPage()
         {
             IsShown = false;
             visibility = Visibility.Hidden;

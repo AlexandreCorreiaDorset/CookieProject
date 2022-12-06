@@ -39,6 +39,7 @@ namespace WpfFramePasCore.UserControl
                                      "database=" + database + ";";
 
         MySqlConnection conn = new MySqlConnection(connectionString);
+
         private void GoToP2(object sender, RoutedEventArgs e)
         {
             string numberofVcookie = number_Vanilla_Cookie.Text;
@@ -81,6 +82,7 @@ namespace WpfFramePasCore.UserControl
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.DataContext = viewModel;
         }
+
         private void GoToP3(object sender, RoutedEventArgs e)
         {
             MyViewModel1 model1 = new MyViewModel1();
@@ -98,6 +100,7 @@ namespace WpfFramePasCore.UserControl
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.DataContext = viewModel;
         }
+
         private void GoToP4(object sender, RoutedEventArgs e)
         {
             MyViewModel1 model1 = new MyViewModel1();
@@ -150,6 +153,24 @@ namespace WpfFramePasCore.UserControl
 
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.DataContext = viewModel;
+        }
+        private void GoToManagerP(object sender, RoutedEventArgs e)
+        {
+            MyViewModel1 model1 = new MyViewModel1();
+            MyViewModelManegerPage model2 = new MyViewModelManegerPage();
+
+            model2.IsShown = true;
+            model2.visibility = Visibility.Visible;
+
+            model1.IsShown = false;
+            model1.visibility = Visibility.Hidden;
+
+            ViewModel viewModel = new ViewModel();
+            viewModel.DataLoad(model1, model2);
+
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.DataContext = viewModel;
+
         }
     }
 }

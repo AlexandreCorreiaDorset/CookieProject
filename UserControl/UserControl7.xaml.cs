@@ -93,11 +93,6 @@ namespace WpfFramePasCore.UserControl
             MessageBox.Show("User deleted !");
             RefreshDb();
         }
-
-        private void addNewStockClick(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void RefreshDb()
         {
             try

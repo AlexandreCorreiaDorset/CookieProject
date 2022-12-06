@@ -28,6 +28,9 @@
         <DataTemplate DataType="{x:Type local:MyViewModel7}">
             <local:UserControl7 DataContext="{Binding}" Visibility="{Binding visibility}" />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:MyViewModelManegerPage}">
+            <local:UserControlManegerPage DataContext="{Binding}" Visibility="{Binding visibility}" />
+        </DataTemplate>
     </UserControl.Resources>
     <ContentControl Content="{Binding}" />
 </UserControl>

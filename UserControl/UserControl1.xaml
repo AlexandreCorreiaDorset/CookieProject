@@ -7,14 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label Content="1. Enter Command" Height="29" Margin="0,0,0,420.6"></Label>
-        <StackPanel x:Name="contentWrapper" Orientation="Vertical" Margin="0,50,747,200">
+        <Label Content="1. Enter Command" Margin="0,3,0,96"/>
+        <StackPanel x:Name="contentWrapper" Orientation="Vertical" Margin="0,50,747,199.6" Grid.RowSpan="2">
             <TextBox Name="number_Vanilla_Cookie" Height="23" Margin="10,10,5.8,10" TextWrapping="Wrap" Text="0" RenderTransformOrigin="0.677,2.12"/>
             <TextBox Name="number_Choco_Cookie" Height="23" Margin="10,10,5.8,10" TextWrapping="Wrap" Text="0" />
             <TextBox Name="number_classic" Height="23" Margin="10,10,5.8,10" TextWrapping="Wrap" Text="0"/>
             <TextBox Name="number_Lemon_Cookie"  Height="23" Margin="10,10,5.8,10" TextWrapping="Wrap" Text="0"/>
         </StackPanel>
-        <StackPanel x:Name="contentWrapper2" Orientation="Vertical" Margin="58,51,442,200">
+        <StackPanel x:Name="contentWrapper2" Orientation="Vertical" Margin="58,51,442,199.6" Grid.RowSpan="2">
 
             <TextBlock TextWrapping="Wrap" Margin="10" Text="Vanilla Cookie" Height="22" />
             <TextBlock TextWrapping="Wrap" Margin="10" Text="Double Chocolate Cookie" Height="22" />
@@ -22,35 +22,14 @@
             <TextBlock TextWrapping="Wrap" Margin="10" Text="Lemon Cookie" Height="22" />
         </StackPanel>
 
-        <Button Content="Confirmer" Click="GoToP2" Margin="399,272,321,0" VerticalAlignment="Top" Height="23" >
+        <Button Content="Confirmer" Click="GoToP2" Margin="387,255,333,0" VerticalAlignment="Top" Height="23" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Stocks" Click="GoToP5" HorizontalAlignment="Left" Margin="586,212,0,0" VerticalAlignment="Top" Width="115" Height="25">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Content="Customers" Click="GoToP4" HorizontalAlignment="Left" Margin="586,84,0,0" VerticalAlignment="Top" Width="115" Height="26">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Content="Commands" Click="GoToP3" HorizontalAlignment="Left" Margin="586,147,0,0" VerticalAlignment="Top" Width="115" Height="28">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Content="Delivery" HorizontalAlignment="Left" Margin="586,36,0,0" VerticalAlignment="Top" Width="115" Click="GoToP7" Height="29">
+        <Button Content="Stocks" Click="GoToP5" HorizontalAlignment="Left" Margin="586,167,0,0" VerticalAlignment="Top" Width="170" Height="40">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -62,7 +41,7 @@
                 <BitmapImage  UriSource="/image/Logo_Cookie.png" />
             </Image.Source>
         </Image>
-        <Button Content="Management" HorizontalAlignment="Left" Margin="586,175,0,0" VerticalAlignment="Top" Width="115" Click="GoToP7" Height="29">
+        <Button Content="Management" HorizontalAlignment="Left" Margin="586,83,0,0" VerticalAlignment="Top" Width="170" Click="GoToManagerP" Height="40">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>

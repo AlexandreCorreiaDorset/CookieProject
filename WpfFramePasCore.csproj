@@ -176,7 +176,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UserControl\MyViewModelAbstract.cs" />
+    <Compile Include="UserControl\MyViewModelManegerPage.cs" />
     <Compile Include="UserControl\MyViewModel1.cs" />
     <Compile Include="UserControl\MyViewModel2.cs" />
     <Compile Include="UserControl\MyViewModel3.cs" />
@@ -208,6 +208,9 @@
     </Compile>
     <Compile Include="UserControl\UserControl7.xaml.cs">
       <DependentUpon>UserControl7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UserControlManegerPage.xaml.cs">
+      <DependentUpon>UserControlManegerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControl\ViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -251,6 +254,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\UserControl7.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\UserControlManegerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -11,8 +11,8 @@
         <local:ViewModel/>
     </Window.DataContext>
 
-    
-    <Grid>
+
+    <Grid Background="Beige">
         <local:UC1 DataContext="{Binding CurrentVM,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
 
     </Grid>
