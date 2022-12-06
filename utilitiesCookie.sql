@@ -59,7 +59,7 @@ insert into ingredients (ingredient_name,quantity) values
 select * from ingredients;
 CREATE TABLE delivery(
     Id int NOT NULL AUTO_INCREMENT,
-    delivery_date date NOT NULL,
+    delivery_date date,
     product_id int,
     numberof int,
 	price int,
@@ -72,16 +72,17 @@ union
 Select * from ingredients where found_rows() =0
  and ingredient_name like '%%';
  
- Select * from ingredients where ingredient_name like '%%'
+ Select * from ingredients where ingredient_name like '%al%'
 union Select* from ingredients where found_rows() = 0 and ingredient_name like '%%';
  
  select delivery.Id, ingredients.ingredient_name, delivery_date,numberof, price from delivery
- right join ingredients on ingredients.Id = delivery.product_id  where ingredients.ingredient_name = '%salt%';
+ inner join ingredients on ingredients.Id = delivery.product_id where ingredients.ingredient_name = '%chocolate%';
 
 select * from delivery;
 
 select * from ingredients;
-
+update delivery set numberof = 5,price = 100,delivery_date = '2222-12-22' ORDER BY Id DESC LIMIT 1; 
+Select * from delivery where Id= (select Id from delivery order by Id desc limit 1 );
  insert into delivery (delivery_date,product_id,numberof,price)
  values
  ('2222-01-01',1,2,5),

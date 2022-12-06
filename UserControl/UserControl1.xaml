@@ -24,7 +24,7 @@
 
         <Button Content="Confirmer" Click="GoToP2" Margin="399,272,321,0" VerticalAlignment="Top" Height="23" />
         <Button Content="Stocks" Click="GoToP5" HorizontalAlignment="Left" Margin="570,229,0,0" VerticalAlignment="Top" Width="115" Height="36"/>
-        <Button Content="Clients" HorizontalAlignment="Left" Margin="570,51,0,0" VerticalAlignment="Top" Width="115" Height="47"/>
+        <Button Content="Clients" Click="GoToP4" HorizontalAlignment="Left" Margin="570,51,0,0" VerticalAlignment="Top" Width="115" Height="47"/>
         <Button Content="Commands" Click="GoToP3" HorizontalAlignment="Left" Margin="570,138,0,0" VerticalAlignment="Top" Width="115" Height="44"/>
 
     </Grid>

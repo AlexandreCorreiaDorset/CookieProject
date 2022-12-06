@@ -176,6 +176,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControl\MyViewModelAbstract.cs" />
     <Compile Include="UserControl\MyViewModel1.cs" />
     <Compile Include="UserControl\MyViewModel2.cs" />
     <Compile Include="UserControl\MyViewModel3.cs" />
