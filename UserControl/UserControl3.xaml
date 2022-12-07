@@ -7,7 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Button Content="Back" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Click="GoToP1" RenderTransformOrigin="0.224,0.42" Margin="10,0,0,410" Height="30"/>
+        <Button Content="Back" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Click="GoToP1" RenderTransformOrigin="0.224,0.42" Margin="10,0,0,378.6" Height="30">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <StackPanel Margin="130,22,116,24.6">
             <Label Content="Search for a commands:"/>
             <TextBox Height="18" TextWrapping="Wrap" 

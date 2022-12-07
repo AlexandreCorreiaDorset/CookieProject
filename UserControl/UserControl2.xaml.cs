@@ -40,6 +40,8 @@ namespace WpfFramePasCore.UserControl
         public UserControl2()
         {
             InitializeComponent();
+            RefreshDbAsync();
+            //RefreshDB();
         }
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
@@ -48,20 +50,24 @@ namespace WpfFramePasCore.UserControl
 
         private void textChangedEventHandler(object sender, RoutedEventArgs e)
         {
-            
+            RefreshDbAsync();            
+        }
+        private async void RefreshDbAsync()
+        {
             try
             {
                 conn.Open();
                 string command;
-                command = "Select Id,name,main_adress,tel,email from clients where name like '%" + name2Search.Text +"%';";
+                command = "Select Id,name,main_adress,tel,email from clients where name like '%" + name2Search.Text + "%';";
 
                 MySqlCommand cmd = new MySqlCommand(command, conn);
 
                 DataSet ds = new DataSet("clients");
                 DataTable customertable = new DataTable();
 
-                customertable.Load(cmd.ExecuteReader());
-                dataGridCustomers.DataContext = customertable;                
+                
+                customertable.Load(await cmd.ExecuteReaderAsync());
+                dataGridCustomers.DataContext = customertable;
 
             }
             catch (MySqlException ex)
@@ -70,6 +76,31 @@ namespace WpfFramePasCore.UserControl
             }
             conn.Close();
         }
+        private void RefreshDB()
+        {
+            try
+            {
+                conn.Open();
+                string command;
+                command = "Select Id,name,main_adress,tel,email from clients where name like '%" + name2Search.Text + "%';";
+
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+
+                DataSet ds = new DataSet("clients");
+                DataTable customertable = new DataTable();
+
+
+                customertable.Load(cmd.ExecuteReader());
+                dataGridCustomers.DataContext = customertable;
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+        }
+
 
         private void dataGridCustomers_SelectionChanged(object sender, EventArgs e)
         {
@@ -88,12 +119,7 @@ namespace WpfFramePasCore.UserControl
                     "' ORDER BY Id DESC LIMIT 1;";
 
                 MySqlCommand cmd = new MySqlCommand(command, conn);
-
-                DataSet ds = new DataSet("clients");
-                DataTable customertable = new DataTable();
-
-                customertable.Load(cmd.ExecuteReader());
-                dataGridCustomers.DataContext = customertable;
+                cmd.ExecuteReader();
 
             }
             catch (MySqlException ex)

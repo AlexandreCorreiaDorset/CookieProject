@@ -14,7 +14,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Custommers" HorizontalAlignment="Left" Margin="296,98,0,0" VerticalAlignment="Top" Width="177" Height="48" Click="GoToP4">
+        <Button Content="Customers" HorizontalAlignment="Left" Margin="296,98,0,0" VerticalAlignment="Top" Width="177" Height="48" Click="GoToP4">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
