@@ -19,11 +19,11 @@
                   ItemsSource="{Binding}" Height="189" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"/>
         </StackPanel>
 
-        <StackPanel Margin="170,261,76,59.6">
-            <Label Content="Delivery for selected product:"></Label>
+        <StackPanel Margin="170,261,76,27.6">
+            <Label Content="Delivery for selected product:" Height="21" Margin="0,0,-0.4,0"></Label>
             <DataGrid HorizontalAlignment="Left" Margin="48,10,0,20" IsReadOnly="true"
                   x:Name="dataGridliv" Width="193" SelectionUnit="FullRow"
-                  ItemsSource="{Binding}" Height="85" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"
+                  ItemsSource="{Binding}" Height="127" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"
                       />
         </StackPanel>
         <Button Content="Back" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Width="36" Height="22" Click="Back_click">
