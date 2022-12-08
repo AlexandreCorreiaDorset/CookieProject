@@ -29,6 +29,7 @@ namespace WpfFramePasCore.UserControl
         public UserControl5()
         {
             InitializeComponent();
+            RefreshDb();
         }
 
         static string server = "localhost";
@@ -44,6 +45,11 @@ namespace WpfFramePasCore.UserControl
         MySqlConnection conn = new MySqlConnection(connectionString);
 
         private void displayStocks(object sender, TextChangedEventArgs e)
+        {
+            RefreshDb();
+
+        }
+        public void RefreshDb()
         {
             try
             {
@@ -65,7 +71,6 @@ namespace WpfFramePasCore.UserControl
                 MessageBox.Show(ex.ToString());
             }
             conn.Close();
-
         }
         private void displayDeliveries(object sender, EventArgs e)
         {

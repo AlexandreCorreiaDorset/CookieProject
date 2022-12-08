@@ -54,8 +54,8 @@ namespace WpfFramePasCore.UserControl
                 string command = "insert into commands (delivery_date, vanilla_cookie_number, " +
                     "               double_chocolate_cookie_number, classic_cookie_number, lemon_cookie_number)" +
                                     " values ('" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "',"
-                                    + numberofVcookie+","+numberOfDcookie+","
-                                    +numberofCcookie+","+numberOfLcookie+");";
+                                    + $"{numberofVcookie},{numberOfDcookie},"
+                                    +$"{numberofCcookie},{numberOfLcookie});";
 
                 MySqlCommand cmd = new MySqlCommand(command, conn);
                 cmd.ExecuteReader();                

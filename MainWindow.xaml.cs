@@ -36,62 +36,7 @@ namespace WpfFramePasCore
 
         public MainWindow()
         {
-            //WindowState = WindowState.Maximized;
-            //WindowStyle = WindowStyle.None;
             InitializeComponent();
-        }      
-        
-
-        private void btnloaddata_Click(object sender, RoutedEventArgs e) {
-
-            string server = "localhost";
-            string database = "cookies";
-            string user = "root";
-            string password = "ABCD1234";
-            //string port = "3306";
-            string connectionString = "server=" + server + ";" +
-                                        "uid=" + user + ";" + 
-                                        "pwd=" + password + ";"+
-                                         "database=" + database + ";" ;
-            
-            MySqlConnection conn = new MySqlConnection(connectionString);
-
-            try
-            {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand("Select * from clients;", conn);
-
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-
-                ///////
-                MessageBox.Show(cmd.ToString());
-                adp.SelectCommand = cmd;
-                
-                //adp.Fill(table);
-                //////
-                //var build = new MySqlCommandBuilder(adp);
-                DataSet ds = new DataSet();
-                DataTable dt = new DataTable();
-
-                adp.Fill(dt);
-                //MessageBox.Show(ds.ToString());
-
-                //dataGridCustomers.DataContext = ds;
-
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-                conn.Close();
-            
-        }
-
-        private void HideButtonOnClick(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(Convert.ToString(GridVisibility));
-            GridVisibility = true;
-            MessageBox.Show(Convert.ToString(GridVisibility));
         }
         public bool GridVisibility
         {

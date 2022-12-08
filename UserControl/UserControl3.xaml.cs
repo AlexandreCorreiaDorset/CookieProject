@@ -61,7 +61,6 @@ namespace WpfFramePasCore.UserControl
 
                 MySqlCommand cmd = new MySqlCommand(command, conn);
 
-                DataSet ds = new DataSet("clients");
                 DataTable customertable = new DataTable();
 
                 customertable.Load(cmd.ExecuteReader());

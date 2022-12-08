@@ -40,8 +40,7 @@ namespace WpfFramePasCore.UserControl
         public UserControl2()
         {
             InitializeComponent();
-            RefreshDbAsync();
-            //RefreshDB();
+            RefreshDB();
         }
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
@@ -50,31 +49,7 @@ namespace WpfFramePasCore.UserControl
 
         private void textChangedEventHandler(object sender, RoutedEventArgs e)
         {
-            RefreshDbAsync();            
-        }
-        private async void RefreshDbAsync()
-        {
-            try
-            {
-                conn.Open();
-                string command;
-                command = "Select Id,name,main_adress,tel,email from clients where name like '%" + name2Search.Text + "%';";
-
-                MySqlCommand cmd = new MySqlCommand(command, conn);
-
-                DataSet ds = new DataSet("clients");
-                DataTable customertable = new DataTable();
-
-                
-                customertable.Load(await cmd.ExecuteReaderAsync());
-                dataGridCustomers.DataContext = customertable;
-
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            conn.Close();
+            RefreshDB();            
         }
         private void RefreshDB()
         {
@@ -85,12 +60,9 @@ namespace WpfFramePasCore.UserControl
                 command = "Select Id,name,main_adress,tel,email from clients where name like '%" + name2Search.Text + "%';";
 
                 MySqlCommand cmd = new MySqlCommand(command, conn);
-
-                DataSet ds = new DataSet("clients");
                 DataTable customertable = new DataTable();
-
-
                 customertable.Load(cmd.ExecuteReader());
+
                 dataGridCustomers.DataContext = customertable;
 
             }
@@ -104,29 +76,7 @@ namespace WpfFramePasCore.UserControl
 
         private void dataGridCustomers_SelectionChanged(object sender, EventArgs e)
         {
-            var cellInfo = dataGridCustomers.SelectedCells[0];
-            var idSelectedClient = (cellInfo.Column.GetCellContent(cellInfo.Item) as TextBlock).Text;
-            
-            cellInfo = dataGridCustomers.SelectedCells[2];
-            var adressSelectedClient = (cellInfo.Column.GetCellContent(cellInfo.Item) as TextBlock).Text;
-
-            try
-            {
-                conn.Open();
-                string command;
-                command = " update commands set Id_client = " + idSelectedClient +
-                    ", adress = '" +adressSelectedClient+
-                    "' ORDER BY Id DESC LIMIT 1;";
-
-                MySqlCommand cmd = new MySqlCommand(command, conn);
-                cmd.ExecuteReader();
-
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            conn.Close();
+            synchClientCommand();
 
             GoToP1();
             MessageBox.Show("Command registered");
@@ -148,6 +98,49 @@ namespace WpfFramePasCore.UserControl
 
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.DataContext = viewModel;
+        }
+        private void synchClientCommand()
+        {
+            try
+            {
+                conn.Open();
+                string command;
+                command = "Select Id,name,main_adress,tel,email from clients where name like '%" + name2Search.Text + "%';";
+
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+                DataTable customertable = new DataTable();
+                customertable.Load(cmd.ExecuteReader());
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            if (true) {
+
+                var cellInfo = dataGridCustomers.SelectedCells[0];
+                var idSelectedClient = (cellInfo.Column.GetCellContent(cellInfo.Item) as TextBlock).Text;
+
+                cellInfo = dataGridCustomers.SelectedCells[2];
+                var adressSelectedClient = (cellInfo.Column.GetCellContent(cellInfo.Item) as TextBlock).Text;
+
+                try
+                {
+                    conn.Open();
+                    string command;
+                    command = " update commands set Id_client = " + idSelectedClient +
+                        ", adress = '" + adressSelectedClient +
+                        "' ORDER BY Id DESC LIMIT 1;";
+
+                    MySqlCommand cmd = new MySqlCommand(command, conn);
+                    cmd.ExecuteReader();
+
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                conn.Close(); 
+            }
         }
 
         private void addNewCustomerClick(object sender, RoutedEventArgs e)

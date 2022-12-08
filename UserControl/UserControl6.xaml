@@ -28,7 +28,13 @@
             <TextBox Height="23"  x:Name="Month"  TextWrapping="Wrap"  Margin="0,35,9.2,0" />
             <TextBox Height="23" x:Name="Year" TextWrapping="Wrap"  Margin="0,40,9.2,0" />
         </StackPanel>
-        <Button Content="Add" Margin="224,297,364,36.6" Click="addDelivery" />
+        <Button Content="Add" Margin="224,297,364,36.6" Click="addDelivery" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <StackPanel HorizontalAlignment="Left" Height="30" Margin="475,330,0,0" VerticalAlignment="Top" Width="100"/>
         <StackPanel HorizontalAlignment="Left" Height="140" Margin="475,273,0,0" VerticalAlignment="Top" Width="52">
             <TextBlock TextWrapping="Wrap" Text="Day"/>
@@ -41,7 +47,13 @@
         <StackPanel HorizontalAlignment="Left" Height="58" Margin="178,259,0,0" VerticalAlignment="Top" Width="48">
             <TextBlock TextWrapping="Wrap" Text="Number" />
         </StackPanel>
-        <Button Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="46" Margin="0,10,0,0" Click="Back_Click"/>
+        <Button Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="46" Margin="0,10,0,0" Click="Back_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <Label Content="Add new delivery:" HorizontalAlignment="Left" Margin="162,236,0,0" VerticalAlignment="Top" Height="32" Width="142"/>
         <StackPanel HorizontalAlignment="Left" Height="30" Margin="416,238,0,0" VerticalAlignment="Top" Width="100">
             <TextBlock TextWrapping="Wrap" ><Run Text="Delivery date"/><Run Text=": "/></TextBlock>
