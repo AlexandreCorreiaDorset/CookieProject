@@ -176,6 +176,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControl\DBQuery.cs" />
     <Compile Include="UserControl\MyViewModelManegerPage.cs" />
     <Compile Include="UserControl\MyViewModel1.cs" />
     <Compile Include="UserControl\MyViewModel2.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="UserControl\MyViewModel5.cs" />
     <Compile Include="UserControl\MyViewModel6.cs" />
     <Compile Include="UserControl\MyViewModel7.cs" />
+    <Compile Include="UserControl\MyViewModelUniversal.cs" />
     <Compile Include="UserControl\NotifyObject.cs" />
     <Compile Include="UserControl\UC1.xaml.cs">
       <DependentUpon>UC1.xaml</DependentUpon>

@@ -25,18 +25,6 @@ namespace WpfFramePasCore.UserControl
     /// </summary>
     public partial class UserControl2
     {
-        static string server = "localhost";
-        static string database = "cookies";
-        static string user = "root";
-        static string password = "ABCD1234";
-        //string port = "3306";
-        static string connectionString = "server=" + server + ";" +
-                                    "uid=" + user + ";" +
-                                    "pwd=" + password + ";" +
-                                     "database=" + database + ";";
-
-        MySqlConnection conn = new MySqlConnection(connectionString);
-
         public UserControl2()
         {
             InitializeComponent();
@@ -55,24 +43,30 @@ namespace WpfFramePasCore.UserControl
         {
             try
             {
-                conn.Open();
-                string command;
-                command = "Select Id,name,main_adress,tel,email from clients where name like '%" + name2Search.Text + "%';";
+                //conn.Open();
+                //string command;
+                //command = "Select Id,name,main_adress,tel,email from clients where name like '%" + name2Search.Text + "%';";
 
-                MySqlCommand cmd = new MySqlCommand(command, conn);
+                //MySqlCommand cmd = new MySqlCommand(command, conn);
+                //DataTable customertable = new DataTable();
+                //customertable.Load(cmd.ExecuteReader());
+
+                //dataGridCustomers.DataContext = customertable;
+
+                DBQuery query = new DBQuery();
                 DataTable customertable = new DataTable();
-                customertable.Load(cmd.ExecuteReader());
+                customertable.Load(query.ExecuteQuery("Select Id,name,main_adress,tel,email from clients where name like '%" + name2Search.Text + "%';"));
 
                 dataGridCustomers.DataContext = customertable;
+
 
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            conn.Close();
+            //conn.Close();
         }
-
 
         private void dataGridCustomers_SelectionChanged(object sender, EventArgs e)
         {
@@ -99,17 +93,14 @@ namespace WpfFramePasCore.UserControl
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.DataContext = viewModel;
         }
+
         private void synchClientCommand()
         {
             try
             {
-                conn.Open();
-                string command;
-                command = "Select Id,name,main_adress,tel,email from clients where name like '%" + name2Search.Text + "%';";
-
-                MySqlCommand cmd = new MySqlCommand(command, conn);
+                DBQuery query = new DBQuery();
                 DataTable customertable = new DataTable();
-                customertable.Load(cmd.ExecuteReader());
+                customertable.Load(query.ExecuteQuery($"Select Id,name,main_adress,tel,email from clients where name like '%{name2Search.Text}%';"));
             }
             catch (MySqlException ex)
             {
@@ -125,24 +116,22 @@ namespace WpfFramePasCore.UserControl
 
                 try
                 {
-                    conn.Open();
-                    string command;
-                    command = " update commands set Id_client = " + idSelectedClient +
-                        ", adress = '" + adressSelectedClient +
-                        "' ORDER BY Id DESC LIMIT 1;";
-
-                    MySqlCommand cmd = new MySqlCommand(command, conn);
-                    cmd.ExecuteReader();
+                    DBQuery query = new DBQuery();
+                    query.ExecuteQuery($" update commands set Id_client = { idSelectedClient }, adress = '{adressSelectedClient}' ORDER BY Id DESC LIMIT 1;");
 
                 }
                 catch (MySqlException ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
-                conn.Close(); 
             }
         }
 
+        /// <summary>
+        /// Add new customer after clicking "add", with the infos writter in the fields
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addNewCustomerClick(object sender, RoutedEventArgs e)
         {
             string cName = Name.Text;
@@ -152,29 +141,23 @@ namespace WpfFramePasCore.UserControl
 
             try
             {
-                conn.Open();
-
-                string command = "insert into clients (name, main_adress,tel, email)" +
-                                " values ('"+ cName + "','" + cAdress + "','"+ cTel + "','" + cEmail + "');";
-
-                MySqlCommand cmd = new MySqlCommand(command, conn);
-                cmd.ExecuteReader();
-                conn.Close();
-
-                conn.Open();
-
-                command = "update commands set Id_client = (select Id from clients order by Id DESC LIMIT 1),"+
-                             "adress = (select adress from clients order by Id DESC LIMIT 1)"+
+                using (DBQuery query = new DBQuery())
+                {
+                    query.ExecuteQuery($"insert into clients (name, main_adress,tel, email) values ('{cName}','{cAdress}','{cTel}','{cEmail}');");
+                }
+                using (DBQuery query = new DBQuery())
+                {
+                    string command = "update commands set Id_client = (select Id from clients order by Id DESC LIMIT 1)," +
+                             "adress = (select adress from clients order by Id DESC LIMIT 1)" +
                              "ORDER BY Id DESC LIMIT 1; ";
 
-                cmd = new MySqlCommand(command, conn);
-                cmd.ExecuteReader();
+                    query.ExecuteQuery(command);
+                }
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            conn.Close();
             GoToP1();
             MessageBox.Show("Command registered");
 
