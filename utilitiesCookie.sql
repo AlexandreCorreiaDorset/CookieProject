@@ -9,6 +9,12 @@ CREATE TABLE clients(
 insert into clients (name,main_adress,tel,email) values ('ter2ze1fofo','15216rtg1po','555216113215','pzfefek@ezfzf.epfm');
 select * from clients; 
 select * from commands;
+
+select commands.Id, clients.name, delivery_date, adress,
+                            vanilla_cookie_number, double_chocolate_cookie_number,
+                            classic_cookie_number, lemon_cookie_number from commands
+                        inner join clients on clients.Id = commands.Id_client where clients.name like '%%';
+
 CREATE TABLE commands(
     Id int NOT NULL AUTO_INCREMENT,
     delivery_date date NOT NULL,
@@ -23,9 +29,11 @@ CREATE TABLE commands(
 update commands set Id_client = 2,
  adress = '15216rtg1po'
  ORDER BY Id DESC LIMIT 1;
+ 
  update commands set Id_client = (select Id from clients order by Id DESC LIMIT 1,1),
  adress = (select adress from clients order by Id DESC LIMIT 1,1)
  ORDER BY Id DESC LIMIT 1;
+ 
 delete from commands where Id_client is null;
 select * from ingredients;
 CREATE TABLE stocks(
@@ -36,8 +44,10 @@ CREATE TABLE stocks(
 	price int,
     PRIMARY KEY (Id)
 );
-select * from ingredients;
+
+select Id from ingredients;
 drop table ingredients;
+
 CREATE TABLE ingredients(
     Id int NOT NULL AUTO_INCREMENT,
     ingredient_name varchar(255) NOT NULL,
@@ -76,7 +86,7 @@ Select * from ingredients where found_rows() =0
 union Select* from ingredients where found_rows() = 0 and ingredient_name like '%%';
  
  select delivery.Id, ingredients.ingredient_name, delivery_date,numberof, price from delivery
- inner join ingredients on ingredients.Id = delivery.product_id where ingredients.ingredient_name = '%chocolate%';
+ inner join ingredients on ingredients.Id = delivery.product_id where ingredients.ingredient_name = '%%';
 
 select * from delivery;
 
